@@ -373,7 +373,7 @@ def process_vogdb(vog_hmm_targz, output_dir='.', logger=LOGGER, version=DEFAULT_
     vogdb_targz = tarfile.open(vog_hmm_targz)
     vogdb_targz.extractall(hmm_dir)
     vog_hmms = path.join(output_dir, f'vog_{version}_hmms.txt')
-    merge_files(glob(path.join(hmm_dir, 'VOG*.hmm')), vog_hmms)
+    merge_files(glob(path.join(hmm_dir, 'hmm/VOG*.hmm')), vog_hmms)
     run_process(['hmmpress', '-f', vog_hmms], logger, verbose=verbose)
     LOGGER.info('VOGdb database processed')
     return {'vogdb': vog_hmms}
